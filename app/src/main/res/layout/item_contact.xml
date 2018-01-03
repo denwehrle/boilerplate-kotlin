@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/imageAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="12dp"
+        tools:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:textSize="@dimen/text_title"
+        app:layout_constraintLeft_toRightOf="@+id/imageAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imageAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Dennis" />
+
+    <TextView
+        android:id="@+id/textLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:textSize="@dimen/text_title"
+        app:layout_constraintLeft_toRightOf="@+id/textFirstName"
+        app:layout_constraintStart_toEndOf="@+id/textFirstName"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Wehrle" />
+
+    <TextView
+        android:id="@+id/textEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_body"
+        app:layout_constraintStart_toStartOf="@+id/textFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/textFirstName"
+        tools:text="denwehrle@gmail.com" />
+
+</android.support.constraint.ConstraintLayout>
