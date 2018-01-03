@@ -5,9 +5,11 @@ import android.app.Application
 import android.app.Service
 import android.content.BroadcastReceiver
 import android.content.Context
+import android.os.Build
 import android.support.multidex.MultiDex
 import android.support.v4.app.Fragment
 import com.denwehrle.boilerplate.injection.component.DaggerAppComponent
+import com.denwehrle.boilerplate.util.notification.NotificationUtils
 import com.facebook.stetho.Stetho
 import dagger.android.*
 import dagger.android.support.HasSupportFragmentInjector
@@ -44,6 +46,10 @@ class App : Application(), HasActivityInjector, HasServiceInjector, HasBroadcast
                 .inject(this)
 
         setupDebugUtils()
+
+        if (Build.VERSION.SDK_INT >= 26) {
+            NotificationUtils(applicationContext).createChannels()
+        }
     }
 
     override fun attachBaseContext(base: Context) {

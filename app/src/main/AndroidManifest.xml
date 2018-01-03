@@ -91,7 +91,7 @@
             android:name=".data.sync.provider.ContactProvider"
             android:authorities="com.denwehrle.boilerplate"
             android:exported="false"
-            android:label="contactProvider"
+            android:label="Contacts"
             android:syncable="true" />
 
 

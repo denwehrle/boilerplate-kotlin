@@ -15,4 +15,9 @@ data class Contact(
         var firstName: String,
         var lastName: String,
         var avatar: String
-)
+) {
+
+    override fun toString(): String {
+        return firstName.capitalize() + " " + lastName.capitalize()
+    }
+}
