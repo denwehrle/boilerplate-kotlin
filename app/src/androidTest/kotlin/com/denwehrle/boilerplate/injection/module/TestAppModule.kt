@@ -17,7 +17,7 @@ import javax.inject.Singleton
  * @author Dennis Wehrle
  */
 @Module
-class TestApplicationModule {
+class TestAppModule {
 
     @Provides
     @Singleton
@@ -27,14 +27,14 @@ class TestApplicationModule {
 
     @Provides
     @Singleton
-    fun provideDataManager(): ContactDataManagerInterface {
-        return mock()
+    fun provideDatabaseHelper(context: Context): DatabaseHelper {
+        return Room.inMemoryDatabaseBuilder(context, DatabaseHelper::class.java).build()
     }
 
     @Provides
     @Singleton
-    fun provideDatabaseHelper(context: Context): DatabaseHelper {
-        return Room.inMemoryDatabaseBuilder(context, DatabaseHelper::class.java).build()
+    fun provideContactDataManager(): ContactDataManagerInterface {
+        return mock()
     }
 
     @Provides

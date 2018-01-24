@@ -39,4 +39,5 @@
             android:visibility="gone" />
 
     </FrameLayout>
+
 </android.support.design.widget.CoordinatorLayout>

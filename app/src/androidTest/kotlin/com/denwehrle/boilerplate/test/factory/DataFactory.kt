@@ -1,5 +1,6 @@
 package com.denwehrle.boilerplate.test.factory
 
+import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 
 /**
@@ -7,10 +8,14 @@ import java.util.concurrent.ThreadLocalRandom
  */
 class DataFactory {
 
-    companion object Factory {
+    companion object {
 
-        fun randomUuid(): String {
+        fun randomString(): String {
             return java.util.UUID.randomUUID().toString()
+        }
+
+        fun randomDouble(): Double {
+            return ThreadLocalRandom.current().nextDouble(-90.0, 90.0)
         }
 
         fun randomInt(): Int {
@@ -25,12 +30,12 @@ class DataFactory {
             return Math.random() < 0.5
         }
 
-        fun makeStringList(count: Int): List<String> {
-            val items: MutableList<String> = mutableListOf()
-            repeat(count) {
-                items.add(randomUuid())
-            }
-            return items
+        fun randomDate(): Date {
+            return Date()
+        }
+
+        fun randomFloat(): Float {
+            return ThreadLocalRandom.current().nextFloat()
         }
     }
 }

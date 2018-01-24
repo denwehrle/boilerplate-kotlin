@@ -23,14 +23,11 @@ class ContactDataManager @Inject constructor(preferenceHelper: PreferenceHelper,
 
 ) : BaseDataManager(preferenceHelper, databaseHelper), ContactDataManagerInterface {
 
-
-    /********* Contact *********/
-
     override fun getContacts(): Flowable<List<Contact>> {
         return databaseHelper.contactDao().getAll()
     }
 
-    fun getContactByEmail(email: String): Single<Contact> {
+    override fun getContactByEmail(email: String): Single<Contact> {
         return databaseHelper.contactDao().findByEmail(email)
     }
 

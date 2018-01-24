@@ -1,13 +1,13 @@
-package com.denwehrle.boilerplate.contact
+package com.denwehrle.boilerplate.ui.contact
 
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.denwehrle.boilerplate.data.local.model.Contact
 import com.denwehrle.boilerplate.test.TestApp
 import com.denwehrle.boilerplate.test.factory.ContactFactory
-import com.denwehrle.boilerplate.ui.contact.ContactActivity
+import com.denwehrle.boilerplate.ui.contact.detail.ContactDetailActivity
 import com.nhaarman.mockito_kotlin.whenever
-import io.reactivex.Flowable
+import io.reactivex.Single
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,19 +18,19 @@ import org.junit.runner.RunWith
  * @author Dennis Wehrle
  */
 @RunWith(AndroidJUnit4::class)
-class ContactActivityTest {
+class ContactDetailActivityTest {
 
     @Rule
     @JvmField
-    val activity = ActivityTestRule<ContactActivity>(ContactActivity::class.java, false, false)
+    val activity = ActivityTestRule<ContactDetailActivity>(ContactDetailActivity::class.java, false, false)
 
     @Test
     fun activityLaunches() {
-        stubGetContacts(Flowable.just(ContactFactory.makeContactList(10)))
+        stubGetContact(Single.just(ContactFactory.makeContact()))
         activity.launchActivity(null)
     }
 
-    private fun stubGetContacts(contacts: Flowable<List<Contact>>) {
-        whenever(TestApp.appComponent().dataManager().getContacts()).thenReturn(contacts)
+    private fun stubGetContact(contact: Single<Contact>) {
+        whenever(TestApp.appComponent().contactDataManager().getContactByEmail("denwehrle@gmail.com")).thenReturn(contact)
     }
 }

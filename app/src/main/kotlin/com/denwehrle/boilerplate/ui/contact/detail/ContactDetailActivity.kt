@@ -19,7 +19,7 @@ class ContactDetailActivity : BaseDetailActivity(), ContactDetailMvpView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact)
 
-        val email = intent.getStringExtra("email")
+        val email = intent.getStringExtra("email") ?: ""
 
         presenter.attachView(this)
         presenter.loadData(email)

@@ -9,12 +9,11 @@ import android.view.View
 import android.widget.Toast
 import com.denwehrle.boilerplate.R
 import com.denwehrle.boilerplate.data.auth.AuthenticatorUtils
-import com.denwehrle.boilerplate.data.manager.contact.ContactDataManager
 import com.denwehrle.boilerplate.ui.base.BaseActivity
 import com.denwehrle.boilerplate.ui.contact.ContactActivity
 import com.denwehrle.boilerplate.ui.welcome.WelcomeActivity
 import com.denwehrle.boilerplate.util.sync.SyncUtils
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.content_login.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -28,18 +27,17 @@ class LoginActivity : BaseActivity(), LoginMvpView, View.OnClickListener {
      * with the @Inject annotation.
      */
     @Inject lateinit var presenter: LoginPresenter
-    @Inject lateinit var contactDataManager: ContactDataManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        if (!contactDataManager.isWelcomeDone()) {
+        presenter.attachView(this)
+
+        if (!presenter.isWelcomeDone()) {
             startActivity(Intent(this, WelcomeActivity::class.java))
             finish()
         }
-
-        presenter.attachView(this)
     }
 
     override fun onClick(view: View) {
@@ -86,7 +84,7 @@ class LoginActivity : BaseActivity(), LoginMvpView, View.OnClickListener {
 
         Handler().postDelayed({
 
-            // Actions to do after 2 seconds, time to download data in background
+            // Actions to do after 3 seconds, time to download data in background
             showProgress(false)
             startActivity(Intent(this, ContactActivity::class.java))
             overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_left)

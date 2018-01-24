@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager
 import android.view.View
 import com.denwehrle.boilerplate.R
 import com.denwehrle.boilerplate.ui.base.BaseActivity
-import com.denwehrle.boilerplate.ui.contact.ContactActivity
 import com.denwehrle.boilerplate.ui.login.LoginActivity
 import com.denwehrle.boilerplate.ui.welcome.section.WelcomeSectionFragment
 import kotlinx.android.synthetic.main.content_welcome.*

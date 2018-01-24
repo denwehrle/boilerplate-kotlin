@@ -1,7 +1,7 @@
 package com.denwehrle.boilerplate.test.factory
 
 import com.denwehrle.boilerplate.data.local.model.Contact
-import com.denwehrle.boilerplate.test.factory.DataFactory.Factory.randomUuid
+import com.denwehrle.boilerplate.test.factory.DataFactory.Companion.randomString
 
 /**
  * @author Dennis Wehrle
@@ -18,8 +18,12 @@ class ContactFactory {
             return contacts
         }
 
-        private fun makeContact(): Contact {
-            return Contact(randomUuid(), randomUuid(), randomUuid(), randomUuid())
+        fun makeContact(): Contact {
+            return Contact(email = randomString(),
+                    firstName = randomString(),
+                    lastName = randomString(),
+                    avatar = randomString()
+            )
         }
     }
 }

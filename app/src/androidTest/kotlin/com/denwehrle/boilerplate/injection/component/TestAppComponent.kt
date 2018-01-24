@@ -3,7 +3,7 @@ package com.denwehrle.boilerplate.injection.component
 import android.app.Application
 import com.denwehrle.boilerplate.data.manager.contact.ContactDataManagerInterface
 import com.denwehrle.boilerplate.injection.module.BindingModule
-import com.denwehrle.boilerplate.injection.module.TestApplicationModule
+import com.denwehrle.boilerplate.injection.module.TestAppModule
 import com.denwehrle.boilerplate.test.TestApp
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +14,7 @@ import javax.inject.Singleton
  * @author Dennis Wehrle
  */
 @Singleton
-@Component(modules = [TestApplicationModule::class, BindingModule::class, AndroidSupportInjectionModule::class])
+@Component(modules = [TestAppModule::class, BindingModule::class, AndroidSupportInjectionModule::class])
 interface TestAppComponent : AppComponent {
 
     @Component.Builder
@@ -26,7 +26,7 @@ interface TestAppComponent : AppComponent {
         fun build(): TestAppComponent
     }
 
-    fun inject(application: TestApp)
+    fun inject(app: TestApp)
 
-    fun dataManager(): ContactDataManagerInterface
+    fun contactDataManager(): ContactDataManagerInterface
 }

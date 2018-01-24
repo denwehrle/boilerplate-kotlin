@@ -18,7 +18,7 @@ Languages, libraries and tools used
 - [Robolectric](http://robolectric.org/)
 - [Mockito](http://mockito.org/)
 
-##Requirements
+## Requirements
 
 - JDK 1.8
 - Android Studio 3.0

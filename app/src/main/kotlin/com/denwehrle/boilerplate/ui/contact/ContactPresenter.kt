@@ -15,7 +15,7 @@ import javax.inject.Inject
  *
  * @author Dennis Wehrle
  */
-class ContactPresenter @Inject constructor(private val contactDataManager: ContactDataManager) : BasePresenter<ContactMvpView>() {
+class ContactPresenter @Inject constructor(private val dataManager: ContactDataManager) : BasePresenter<ContactMvpView>() {
 
     /**
      * All disposables will be stored inside the [CompositeDisposable] so we can clear
@@ -47,17 +47,13 @@ class ContactPresenter @Inject constructor(private val contactDataManager: Conta
      * associated methods inside our view.
      */
     fun loadData() {
-        disposables.add(contactDataManager.getContacts()
+        disposables.add(dataManager.getContacts()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onNext = {
-                            if (it.isEmpty()) {
-                                mvpView.showProgress(false)
-                            } else {
                                 mvpView.showProgress(false)
                                 mvpView.showData(it)
-                            }
                         },
                         onError = {
                             mvpView.showProgress(false)
