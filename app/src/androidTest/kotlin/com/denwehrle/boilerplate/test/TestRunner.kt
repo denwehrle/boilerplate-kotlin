@@ -3,14 +3,14 @@ package com.denwehrle.boilerplate.test
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
-import android.support.test.runner.AndroidJUnitRunner
+import com.github.tmurakami.dexopener.DexOpenerAndroidJUnitRunner
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
 
 /**
  * @author Dennis Wehrle
  */
-class TestRunner : AndroidJUnitRunner() {
+class TestRunner : DexOpenerAndroidJUnitRunner() {
 
     override fun onCreate(arguments: Bundle) {
         super.onCreate(arguments)

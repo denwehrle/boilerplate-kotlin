@@ -15,7 +15,7 @@ import javax.inject.Singleton
 class LoginDataManager @Inject constructor(preferenceHelper: PreferenceHelper,
                                            databaseHelper: DatabaseHelper
 
-) : BaseDataManager(preferenceHelper, databaseHelper), LoginDataManagerInterface {
+) : BaseDataManager(preferenceHelper, databaseHelper) {
 
     fun signIn(username: String, password: String): Single<LoginResult> {
         return Single.just(LoginResult.SUCCESS)

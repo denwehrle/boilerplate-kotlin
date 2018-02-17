@@ -13,6 +13,8 @@ import dagger.android.AndroidInjection
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+    private var shouldCheckAccount = true
+
     /**
      * For AndroidInjection.inject(this) to work the Activity/Fragment/Service has to be
      * registered in injection/module/BindingModule. Make sure it's called before
@@ -21,11 +23,17 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+
+        if (intent.getBooleanExtra("testMode", false)) {
+            shouldCheckAccount = false
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        checkAccount()
+        if (shouldCheckAccount) {
+            checkAccount()
+        }
     }
 
     private fun checkAccount() {

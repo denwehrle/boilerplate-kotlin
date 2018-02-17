@@ -1,5 +1,6 @@
 package com.denwehrle.boilerplate.ui.contact
 
+import android.content.Intent
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.denwehrle.boilerplate.data.local.model.Contact
@@ -27,7 +28,7 @@ class ContactDetailActivityTest {
     @Test
     fun activityLaunches() {
         stubGetContact(Single.just(ContactFactory.makeContact()))
-        activity.launchActivity(null)
+        activity.launchActivity(Intent().putExtra("email", "denwehrle@gmail.com"))
     }
 
     private fun stubGetContact(contact: Single<Contact>) {

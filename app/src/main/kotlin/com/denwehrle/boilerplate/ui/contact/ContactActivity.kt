@@ -9,7 +9,6 @@ import com.denwehrle.boilerplate.data.local.model.Contact
 import com.denwehrle.boilerplate.ui.base.BaseActivity
 import com.denwehrle.boilerplate.ui.contact.detail.ContactDetailActivity
 import kotlinx.android.synthetic.main.activity_contact.*
-//import kotlinx.android.synthetic.main.content_contact.*
 import timber.log.Timber
 import javax.inject.Inject
 

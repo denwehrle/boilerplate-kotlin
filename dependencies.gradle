@@ -40,6 +40,7 @@ ext {
     assertJVersion = '3.8.0'
     dexmakerMockitoversion = '2.2.0'
     dexmakerVersion = '1.0'
+    dexopenerVersion = '0.10.1'
     espressoVersion = '3.0.0'
     jUnitVersion = '4.12'
     mockitoAndroidVersion = '2.8.47'
@@ -94,6 +95,7 @@ ext {
             supportRunner       : "com.android.support.test:runner:${androidSupportRunnerVersion}",
             supportRules        : "com.android.support.test:rules:${androidSupportRulesVersion}",
             dexmakerMockito     : "com.linkedin.dexmaker:dexmaker-mockito:${dexmakerMockitoversion}",
+            dexopener           : "com.github.tmurakami:dexopener:${dexopenerVersion}",
             espressoCore        : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
             espressoIntents     : "com.android.support.test.espresso:espresso-intents:${espressoVersion}",
             espressoContrib     : "com.android.support.test.espresso:espresso-contrib:${espressoVersion}",

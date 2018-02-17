@@ -133,6 +133,7 @@ dependencies {
     compileOnly appDependencies.glassfishAnnotation
 
     // Instrumentation test dependencies
+    androidTestImplementation testDependencies.dexopener
     androidTestImplementation testDependencies.junit
     androidTestImplementation testDependencies.mockito
     androidTestImplementation testDependencies.dexmakerMockito
@@ -158,6 +159,7 @@ dependencies {
         exclude module: 'design'
     }
     kaptAndroidTest appDependencies.daggerCompiler
+
 
     // Unit test dependencies
     testImplementation testDependencies.junit

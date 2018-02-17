@@ -1,7 +1,7 @@
 package com.denwehrle.boilerplate.injection.component
 
 import android.app.Application
-import com.denwehrle.boilerplate.data.manager.contact.ContactDataManagerInterface
+import com.denwehrle.boilerplate.data.manager.contact.ContactDataManager
 import com.denwehrle.boilerplate.injection.module.BindingModule
 import com.denwehrle.boilerplate.injection.module.TestAppModule
 import com.denwehrle.boilerplate.test.TestApp
@@ -28,5 +28,5 @@ interface TestAppComponent : AppComponent {
 
     fun inject(app: TestApp)
 
-    fun contactDataManager(): ContactDataManagerInterface
+    fun contactDataManager(): ContactDataManager
 }
