@@ -13,7 +13,8 @@ import javax.inject.Inject
  */
 class ContactDetailActivity : BaseDetailActivity(), ContactDetailMvpView {
 
-    @Inject lateinit var presenter: ContactDetailPresenter
+    @Inject
+    lateinit var presenter: ContactDetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

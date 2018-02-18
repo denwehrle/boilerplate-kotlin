@@ -1,4 +1,4 @@
-package com.denwehrle.boilerplate.test
+package com.denwehrle.boilerplate
 
 import android.app.Activity
 import android.app.Application
@@ -17,10 +17,14 @@ import javax.inject.Inject
  */
 class TestApp : Application(), HasActivityInjector, HasServiceInjector, HasBroadcastReceiverInjector, HasSupportFragmentInjector {
 
-    @Inject lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-    @Inject lateinit var receiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
-    @Inject lateinit var serviceInjector: DispatchingAndroidInjector<Service>
+    @Inject
+    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+    @Inject
+    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var receiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
+    @Inject
+    lateinit var serviceInjector: DispatchingAndroidInjector<Service>
 
     lateinit var appComponent: TestAppComponent
 

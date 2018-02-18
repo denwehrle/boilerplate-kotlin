@@ -1,14 +1,14 @@
-package com.denwehrle.boilerplate.test.factory
+package com.denwehrle.boilerplate.factory
 
 import com.denwehrle.boilerplate.data.local.model.Contact
-import com.denwehrle.boilerplate.test.factory.DataFactory.Companion.randomString
+import com.denwehrle.boilerplate.factory.DataFactory.Companion.randomString
 
 /**
  * @author Dennis Wehrle
  */
 class ContactFactory {
 
-    companion object Factory {
+    companion object {
 
         fun makeContactList(count: Int): List<Contact> {
             val contacts = mutableListOf<Contact>()
@@ -24,6 +24,10 @@ class ContactFactory {
                     lastName = randomString(),
                     avatar = randomString()
             )
+        }
+
+        fun makeContact(firstName: String, lastName: String): Contact {
+            return Contact(randomString(), firstName, lastName, randomString())
         }
     }
 }

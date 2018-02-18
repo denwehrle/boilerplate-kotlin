@@ -26,10 +26,14 @@ class App : Application(), HasActivityInjector, HasServiceInjector, HasBroadcast
      * inside our classes later. These injectors use the provider methods
      * defined in the /injection folder.
      */
-    @Inject lateinit var activityInjector: DispatchingAndroidInjector<Activity>
-    @Inject lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-    @Inject lateinit var receiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
-    @Inject lateinit var serviceInjector: DispatchingAndroidInjector<Service>
+    @Inject
+    lateinit var activityInjector: DispatchingAndroidInjector<Activity>
+    @Inject
+    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    @Inject
+    lateinit var receiverInjector: DispatchingAndroidInjector<BroadcastReceiver>
+    @Inject
+    lateinit var serviceInjector: DispatchingAndroidInjector<Service>
 
     override fun onCreate() {
         super.onCreate()

@@ -14,7 +14,6 @@ import com.denwehrle.boilerplate.R
 import com.denwehrle.boilerplate.ui.contact.ContactActivity
 import dagger.android.AndroidInjection
 import timber.log.Timber
-import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -23,7 +22,7 @@ import java.util.*
 class ContactWidgetProvider : AppWidgetProvider() {
 
     companion object {
-        val ACTION_SCHEDULE_WIDGET_REFRESH = BuildConfig.APPLICATION_ID + ".widgetRefresh"
+        const val ACTION_SCHEDULE_WIDGET_REFRESH = BuildConfig.APPLICATION_ID + ".widgetRefresh"
 
         fun getAllAppWidgetIds(context: Context, appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context)): IntArray {
             return appWidgetManager.getAppWidgetIds(ComponentName(context, ContactWidgetProvider::class.java))

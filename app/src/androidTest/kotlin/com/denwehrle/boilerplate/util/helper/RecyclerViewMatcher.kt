@@ -1,4 +1,4 @@
-package com.denwehrle.boilerplate.test.util
+package com.denwehrle.boilerplate.util.helper
 
 import android.content.res.Resources
 import android.support.v7.widget.RecyclerView

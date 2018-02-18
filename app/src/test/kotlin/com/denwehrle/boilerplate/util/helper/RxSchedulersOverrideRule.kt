@@ -1,4 +1,4 @@
-package com.denwehrle.boilerplate.util
+package com.denwehrle.boilerplate.util.helper
 
 import io.reactivex.Scheduler
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -20,9 +20,9 @@ import java.util.concurrent.Callable
  */
 class RxSchedulersOverrideRule : TestRule {
 
-    private val mRxAndroidSchedulersHook = Function<Callable<Scheduler>, Scheduler> { Schedulers.trampoline() }
+    private val rxAndroidSchedulersHook = Function<Callable<Scheduler>, Scheduler> { Schedulers.trampoline() }
 
-    private val mRxJavaImmediateScheduler = Function<Scheduler, Scheduler> { Schedulers.trampoline() }
+    private val rxJavaImmediateScheduler = Function<Scheduler, Scheduler> { Schedulers.trampoline() }
 
     override fun apply(base: Statement, description: Description): Statement {
         return object : Statement() {
@@ -31,11 +31,11 @@ class RxSchedulersOverrideRule : TestRule {
             override fun evaluate() {
 
                 RxAndroidPlugins.reset()
-                RxAndroidPlugins.setInitMainThreadSchedulerHandler(mRxAndroidSchedulersHook)
+                RxAndroidPlugins.setInitMainThreadSchedulerHandler(rxAndroidSchedulersHook)
 
                 RxJavaPlugins.reset()
-                RxJavaPlugins.setIoSchedulerHandler(mRxJavaImmediateScheduler)
-                RxJavaPlugins.setNewThreadSchedulerHandler(mRxJavaImmediateScheduler)
+                RxJavaPlugins.setIoSchedulerHandler(rxJavaImmediateScheduler)
+                RxJavaPlugins.setNewThreadSchedulerHandler(rxJavaImmediateScheduler)
 
                 base.evaluate()
 

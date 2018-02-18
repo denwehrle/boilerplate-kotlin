@@ -8,7 +8,6 @@ import android.provider.SyncStateContract
 import com.denwehrle.boilerplate.ui.login.LoginActivity
 import timber.log.Timber
 
-
 /**
  * @author Dennis Wehrle
  */

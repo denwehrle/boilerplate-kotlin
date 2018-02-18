@@ -21,8 +21,10 @@ class ContactActivity : BaseActivity(), ContactMvpView {
      * To make classed injectable make sure they have a constructor
      * with the @Inject annotation.
      */
-    @Inject lateinit var presenter: ContactPresenter
-    @Inject lateinit var adapter: ContactAdapter
+    @Inject
+    lateinit var presenter: ContactPresenter
+    @Inject
+    lateinit var adapter: ContactAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

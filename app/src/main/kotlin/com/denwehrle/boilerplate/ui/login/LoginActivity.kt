@@ -26,7 +26,8 @@ class LoginActivity : BaseActivity(), LoginMvpView, View.OnClickListener {
      * To make classed injectable make sure they have a constructor
      * with the @Inject annotation.
      */
-    @Inject lateinit var presenter: LoginPresenter
+    @Inject
+    lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

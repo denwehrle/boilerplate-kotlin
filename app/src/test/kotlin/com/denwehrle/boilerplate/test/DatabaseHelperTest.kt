@@ -2,8 +2,8 @@ package com.denwehrle.boilerplate.test
 
 import android.arch.persistence.room.Room
 import com.denwehrle.boilerplate.data.local.helper.DatabaseHelper
-import com.denwehrle.boilerplate.util.RxSchedulersOverrideRule
-import com.denwehrle.boilerplate.util.factory.ContactFactory
+import com.denwehrle.boilerplate.factory.ContactFactory
+import com.denwehrle.boilerplate.util.helper.RxSchedulersOverrideRule
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule

@@ -1,4 +1,4 @@
-package com.denwehrle.boilerplate.ui.contact
+package com.denwehrle.boilerplate.test.contact
 
 import android.content.Intent
 import android.support.test.espresso.Espresso.onView
@@ -11,10 +11,11 @@ import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
 import com.denwehrle.boilerplate.R
+import com.denwehrle.boilerplate.TestApp
 import com.denwehrle.boilerplate.data.local.model.Contact
-import com.denwehrle.boilerplate.test.TestApp
-import com.denwehrle.boilerplate.test.factory.ContactFactory
-import com.denwehrle.boilerplate.test.util.RecyclerViewMatcher
+import com.denwehrle.boilerplate.factory.ContactFactory
+import com.denwehrle.boilerplate.ui.contact.ContactActivity
+import com.denwehrle.boilerplate.util.helper.RecyclerViewMatcher
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Flowable
 import org.junit.Rule

@@ -2,10 +2,10 @@ package com.denwehrle.boilerplate.test
 
 import com.denwehrle.boilerplate.data.local.model.Contact
 import com.denwehrle.boilerplate.data.manager.contact.ContactDataManager
+import com.denwehrle.boilerplate.factory.ContactFactory
 import com.denwehrle.boilerplate.ui.contact.ContactMvpView
 import com.denwehrle.boilerplate.ui.contact.ContactPresenter
-import com.denwehrle.boilerplate.util.RxSchedulersOverrideRule
-import com.denwehrle.boilerplate.util.factory.ContactFactory
+import com.denwehrle.boilerplate.util.helper.RxSchedulersOverrideRule
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Flowable
 import org.junit.After

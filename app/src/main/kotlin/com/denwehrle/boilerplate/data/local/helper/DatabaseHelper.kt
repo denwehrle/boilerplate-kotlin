@@ -19,7 +19,8 @@ abstract class DatabaseHelper : RoomDatabase() {
 
     companion object {
 
-        @Volatile private var INSTANCE: DatabaseHelper? = null
+        @Volatile
+        private var INSTANCE: DatabaseHelper? = null
 
         fun getInstance(context: Context): DatabaseHelper =
                 INSTANCE ?: synchronized(this) {

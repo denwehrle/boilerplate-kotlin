@@ -52,8 +52,8 @@ class ContactPresenter @Inject constructor(private val dataManager: ContactDataM
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onNext = {
-                                mvpView.showProgress(false)
-                                mvpView.showData(it)
+                            mvpView.showProgress(false)
+                            mvpView.showData(it)
                         },
                         onError = {
                             mvpView.showProgress(false)

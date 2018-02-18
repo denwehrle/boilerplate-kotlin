@@ -13,11 +13,11 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:padding="12dp"
-        tools:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textFirstName"
@@ -30,7 +30,7 @@
         app:layout_constraintLeft_toRightOf="@+id/imageAvatar"
         app:layout_constraintStart_toEndOf="@+id/imageAvatar"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Dennis" />
+        tools:text="@tools:sample/first_names" />
 
     <TextView
         android:id="@+id/textLastName"
@@ -43,7 +43,7 @@
         app:layout_constraintLeft_toRightOf="@+id/textFirstName"
         app:layout_constraintStart_toEndOf="@+id/textFirstName"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Wehrle" />
+        tools:text="@tools:sample/last_names" />
 
     <TextView
         android:id="@+id/textEmail"
@@ -52,6 +52,6 @@
         android:textSize="@dimen/text_body"
         app:layout_constraintStart_toStartOf="@+id/textFirstName"
         app:layout_constraintTop_toBottomOf="@+id/textFirstName"
-        tools:text="denwehrle@gmail.com" />
+        tools:text="@tools:sample/cities" />
 
 </android.support.constraint.ConstraintLayout>

@@ -14,7 +14,8 @@ class ContactSyncService : AbstractSyncService() {
      * To make classed injectable make sure they have a constructor
      * with the @Inject annotation.
      */
-    @Inject lateinit var contactDataManager: ContactDataManager
+    @Inject
+    lateinit var contactDataManager: ContactDataManager
 
     /**
      * We provide the injected dependencies through the constructor because there is

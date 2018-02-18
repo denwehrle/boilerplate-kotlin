@@ -1,8 +1,6 @@
 package com.denwehrle.boilerplate.data.local.helper
 
 import android.content.Context
-import android.content.SharedPreferences
-import android.preference.PreferenceManager
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -21,8 +21,10 @@ class WelcomeActivity : BaseActivity(), WelcomeMvpView, ViewPager.OnPageChangeLi
      * To make classed injectable make sure they have a constructor
      * with the @Inject annotation.
      */
-    @Inject lateinit var presenter: WelcomePresenter
-    @Inject lateinit var adapter: WelcomeAdapter
+    @Inject
+    lateinit var presenter: WelcomePresenter
+    @Inject
+    lateinit var adapter: WelcomeAdapter
 
     /**
      * For AndroidInjection.inject(this) to work the Activity/Fragment/Service has to be

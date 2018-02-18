@@ -13,14 +13,14 @@ static def getBuildNumber() {
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + getBuildNumber()
         minSdkVersion 16
         targetSdkVersion 27
-        testInstrumentationRunner "com.denwehrle.boilerplate.test.TestRunner"
+        testInstrumentationRunner "com.denwehrle.boilerplate.util.helper.TestRunner"
         multiDexEnabled = true
     }
 
@@ -75,6 +75,14 @@ android {
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
         main.java.srcDirs += 'src/main/kotlin'
         test.java.srcDirs += 'src/test/kotlin'
+
+        def commonTestDir = 'src/commonTest/kotlin'
+        test {
+            java.srcDir commonTestDir
+        }
+        androidTest {
+            java.srcDir commonTestDir
+        }
     }
 
     lintOptions {
@@ -159,7 +167,6 @@ dependencies {
         exclude module: 'design'
     }
     kaptAndroidTest appDependencies.daggerCompiler
-
 
     // Unit test dependencies
     testImplementation testDependencies.junit

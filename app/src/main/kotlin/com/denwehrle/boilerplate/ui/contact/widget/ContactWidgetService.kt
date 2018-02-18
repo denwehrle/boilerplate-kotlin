@@ -11,7 +11,8 @@ import javax.inject.Inject
  */
 class ContactWidgetService : RemoteViewsService() {
 
-    @Inject lateinit var contactDataManager: ContactDataManager
+    @Inject
+    lateinit var contactDataManager: ContactDataManager
 
     /**
      * We provide the injected dependencies through the constructor because there is

@@ -1,11 +1,11 @@
-package com.denwehrle.boilerplate.ui.contact
+package com.denwehrle.boilerplate.test.contact
 
 import android.content.Intent
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import com.denwehrle.boilerplate.TestApp
 import com.denwehrle.boilerplate.data.local.model.Contact
-import com.denwehrle.boilerplate.test.TestApp
-import com.denwehrle.boilerplate.test.factory.ContactFactory
+import com.denwehrle.boilerplate.factory.ContactFactory
 import com.denwehrle.boilerplate.ui.contact.detail.ContactDetailActivity
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
@@ -30,6 +30,9 @@ class ContactDetailActivityTest {
         stubGetContact(Single.just(ContactFactory.makeContact()))
         activity.launchActivity(Intent().putExtra("email", "denwehrle@gmail.com"))
     }
+
+
+    /********* Helper Methods *********/
 
     private fun stubGetContact(contact: Single<Contact>) {
         whenever(TestApp.appComponent().contactDataManager().getContactByEmail("denwehrle@gmail.com")).thenReturn(contact)

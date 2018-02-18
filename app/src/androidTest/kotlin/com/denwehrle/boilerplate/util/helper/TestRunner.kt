@@ -1,8 +1,9 @@
-package com.denwehrle.boilerplate.test
+package com.denwehrle.boilerplate.util.helper
 
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
+import com.denwehrle.boilerplate.TestApp
 import com.github.tmurakami.dexopener.DexOpenerAndroidJUnitRunner
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers

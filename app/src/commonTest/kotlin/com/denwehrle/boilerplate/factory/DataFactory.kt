@@ -1,4 +1,4 @@
-package com.denwehrle.boilerplate.test.factory
+package com.denwehrle.boilerplate.factory
 
 import java.util.*
 import java.util.concurrent.ThreadLocalRandom

@@ -24,7 +24,7 @@ class WelcomePresenter @Inject constructor(private val contactDataManager: Conta
         this.mvpView.setUpClickListener()
     }
 
-    fun setWelcomeDone(){
+    fun setWelcomeDone() {
         contactDataManager.setWelcomeDone()
     }
 }

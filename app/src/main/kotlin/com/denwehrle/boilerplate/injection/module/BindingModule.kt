@@ -1,11 +1,11 @@
 package com.denwehrle.boilerplate.injection.module
 
-import com.denwehrle.boilerplate.ui.contact.widget.ContactWidgetProvider
 import com.denwehrle.boilerplate.data.sync.service.ContactSyncService
 import com.denwehrle.boilerplate.injection.scope.PerActivity
 import com.denwehrle.boilerplate.injection.scope.PerFragment
 import com.denwehrle.boilerplate.ui.contact.ContactActivity
 import com.denwehrle.boilerplate.ui.contact.detail.ContactDetailActivity
+import com.denwehrle.boilerplate.ui.contact.widget.ContactWidgetProvider
 import com.denwehrle.boilerplate.ui.contact.widget.ContactWidgetService
 import com.denwehrle.boilerplate.ui.login.LoginActivity
 import com.denwehrle.boilerplate.ui.welcome.WelcomeActivity

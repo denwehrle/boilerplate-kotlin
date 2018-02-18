@@ -21,10 +21,14 @@ class ContactDataManagerTest {
 
     private lateinit var contactDataManager: ContactDataManager
 
-    @Mock lateinit var preferenceHelper: PreferenceHelper
-    @Mock lateinit var contactService: ContactService
-    @Mock lateinit var contactMapper: ContactMapper
-    @Mock lateinit var databaseHelper: DatabaseHelper
+    @Mock
+    lateinit var preferenceHelper: PreferenceHelper
+    @Mock
+    lateinit var contactService: ContactService
+    @Mock
+    lateinit var contactMapper: ContactMapper
+    @Mock
+    lateinit var databaseHelper: DatabaseHelper
 
     @Before
     fun setUp() {
