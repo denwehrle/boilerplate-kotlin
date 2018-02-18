@@ -12,14 +12,14 @@ static def getBuildNumber() {
 }
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion Versions.androidCompileSdk
+    buildToolsVersion Versions.androidBuildTools
 
     defaultConfig {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + getBuildNumber()
-        minSdkVersion 16
-        targetSdkVersion 27
+        minSdkVersion Versions.androidMinSdk
+        targetSdkVersion Versions.androidTargetSdk
         testInstrumentationRunner "com.denwehrle.boilerplate.util.helper.TestRunner"
         multiDexEnabled = true
     }
@@ -99,65 +99,67 @@ kapt {
 
 configurations.all {
     resolutionStrategy {
-        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        force "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
     }
 }
 
 dependencies {
-    def appDependencies = rootProject.ext.appDependencies
-    def testDependencies = rootProject.ext.testDependencies
 
-    implementation appDependencies.androidAnnotations
-    implementation appDependencies.androidSupportV13
-    implementation appDependencies.androidSupportV4
-    implementation appDependencies.appCompatV7
-    implementation appDependencies.constraintLayout
-    implementation appDependencies.dagger
-    implementation appDependencies.daggerSupport
-    implementation appDependencies.glide
-    implementation appDependencies.gson
-    implementation appDependencies.javaxAnnotation
-    implementation appDependencies.javaxInject
-    implementation appDependencies.kotlin
-    implementation appDependencies.okHttp
-    implementation appDependencies.okHttpLogger
-    implementation appDependencies.retrofit
-    implementation appDependencies.retrofitAdapter
-    implementation appDependencies.retrofitConverter
-    implementation appDependencies.roomRuntime
-    implementation appDependencies.roomRxJava
-    implementation appDependencies.rxAndroid
-    implementation appDependencies.rxKotlin
-    implementation appDependencies.stetho
-    implementation appDependencies.supportDesign
-    implementation appDependencies.supportRecyclerView
-    implementation appDependencies.timber
-    implementation appDependencies.pageindicatorview
+    // App dependencies
+    implementation AppDependencies.androidAnnotations
+    implementation AppDependencies.androidSupportV13
+    implementation AppDependencies.androidSupportV4
+    implementation AppDependencies.appCompatV7
+    implementation AppDependencies.constraintLayout
+    implementation AppDependencies.dagger
+    implementation AppDependencies.daggerSupport
+    implementation AppDependencies.glide
+    implementation AppDependencies.gson
+    implementation AppDependencies.javaxAnnotation
+    implementation AppDependencies.javaxInject
+    implementation AppDependencies.kotlin
+    implementation AppDependencies.okHttp
+    implementation AppDependencies.okHttpLogger
+    implementation AppDependencies.retrofit
+    implementation AppDependencies.retrofitAdapter
+    implementation AppDependencies.retrofitConverter
+    implementation AppDependencies.roomRuntime
+    implementation AppDependencies.roomRxJava
+    implementation AppDependencies.rxAndroid
+    implementation AppDependencies.rxKotlin
+    implementation AppDependencies.stetho
+    implementation AppDependencies.supportDesign
+    implementation AppDependencies.supportRecyclerView
+    implementation AppDependencies.timber
+    implementation AppDependencies.pageindicatorview
 
-    kapt appDependencies.roomCompiler
-    kapt appDependencies.daggerCompiler
-    kapt appDependencies.daggerProcessor
+    debugImplementation AppDependencies.leakCanaryDebug
+    releaseImplementation AppDependencies.leakCanaryRelease
 
-    compileOnly appDependencies.glassfishAnnotation
+    kapt AppDependencies.roomCompiler
+    kapt AppDependencies.daggerCompiler
+    kapt AppDependencies.daggerProcessor
+
+    compileOnly AppDependencies.glassfishAnnotation
 
     // Instrumentation test dependencies
-    androidTestImplementation testDependencies.dexopener
-    androidTestImplementation testDependencies.junit
-    androidTestImplementation testDependencies.mockito
-    androidTestImplementation testDependencies.dexmakerMockito
-    androidTestImplementation(testDependencies.espressoCore) {
+    androidTestImplementation TestDependencies.dexopener
+    androidTestImplementation TestDependencies.junit
+    androidTestImplementation TestDependencies.mockitoKotlin
+    androidTestImplementation TestDependencies.dexmakerMockito
+    androidTestImplementation(TestDependencies.espressoCore) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(testDependencies.androidRunner) {
+    androidTestImplementation(TestDependencies.androidRunner) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(testDependencies.androidRules) {
+    androidTestImplementation(TestDependencies.androidRules) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(testDependencies.espressoIntents) {
+    androidTestImplementation(TestDependencies.espressoIntents) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    androidTestImplementation(testDependencies.espressoContrib) {
+    androidTestImplementation(TestDependencies.espressoContrib) {
         exclude module: 'appcompat'
         exclude module: 'appcompat-v7'
         exclude module: 'support-v4'
@@ -166,15 +168,15 @@ dependencies {
         exclude module: 'recyclerview-v7'
         exclude module: 'design'
     }
-    kaptAndroidTest appDependencies.daggerCompiler
+    kaptAndroidTest AppDependencies.daggerCompiler
 
     // Unit test dependencies
-    testImplementation testDependencies.junit
-    testImplementation testDependencies.kotlinJUnit
-    testImplementation testDependencies.mockito
-    testImplementation testDependencies.assertj
-    testImplementation testDependencies.robolectric
-    testImplementation testDependencies.roomTesting
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.kotlinJUnit
+    testImplementation TestDependencies.mockitoKotlin
+    testImplementation TestDependencies.assertj
+    testImplementation TestDependencies.robolectric
+    testImplementation TestDependencies.roomTesting
 
-    kaptTest appDependencies.daggerCompiler
+    kaptTest AppDependencies.daggerCompiler
 }

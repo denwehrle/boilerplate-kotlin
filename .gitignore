@@ -1,13 +1,3 @@
-# built app files
-*.apk
-*.ap_
-
-# files for the dex VM
-*.dex
-
-# Java class files
-*.class
-
 # generated files
 bin/
 gen/
@@ -33,8 +23,6 @@ local.properties
 *.ipr
 *.iws
 
-# Local IDEA workspace
-.idea/workspace.xml
 
 # Gradle cache
 .gradle

@@ -70,7 +70,7 @@ Note: For Android Studio to use syntax highlighting for Automated tests and Unit
 ## License
 
 ```
-    Copyright 2017 Dennis Wehrle
+    Copyright 2018 Dennis Wehrle
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
