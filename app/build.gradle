@@ -13,7 +13,6 @@ static def getBuildNumber() {
 
 android {
     compileSdkVersion Versions.androidCompileSdk
-    buildToolsVersion Versions.androidBuildTools
 
     defaultConfig {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"

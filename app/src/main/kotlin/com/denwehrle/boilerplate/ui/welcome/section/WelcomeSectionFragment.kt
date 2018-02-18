@@ -33,14 +33,15 @@ class WelcomeSectionFragment : BaseFragment(), WelcomeSectionMvpView {
         val rootView = inflater.inflate(R.layout.fragment_welcome, container, false)
 
         val bundle = arguments
-        val title = bundle.getInt("title")
-        val description = bundle.getInt("description")
-        val image = bundle.getInt("image")
+        if (bundle != null) {
+            val title = bundle.getInt("title")
+            val description = bundle.getInt("description")
+            val image = bundle.getInt("image")
 
-        rootView.welcomeTitle.text = resources.getString(title)
-        rootView.welcomeDescription.text = resources.getString(description)
-        rootView.welcomeImage.setImageDrawable(resources.getDrawable(image))
-
+            rootView.welcomeTitle.text = resources.getString(title)
+            rootView.welcomeDescription.text = resources.getString(description)
+            rootView.welcomeImage.setImageDrawable(resources.getDrawable(image))
+        }
         return rootView
     }
 }

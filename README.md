@@ -17,6 +17,7 @@ Languages, libraries and tools used
 - [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/index.html)
 - [Robolectric](http://robolectric.org/)
 - [Mockito](http://mockito.org/)
+- [DexOpener](https://github.com/tmurakami/dexopener)
 
 ## Requirements
 

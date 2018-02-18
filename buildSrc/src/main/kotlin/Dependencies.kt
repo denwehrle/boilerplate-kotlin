@@ -10,7 +10,6 @@
 object Versions {
 
     // Android
-    const val androidBuildTools = "27.0.3"
     const val androidCompileSdk = 27
     const val androidMinSdk = 16
     const val androidTargetSdk = 27
@@ -32,7 +31,7 @@ object Versions {
     const val rxJava = "2.0.2"
     const val rxKotlin = "2.1.0"
     const val stetho = "1.4.0"
-    const val supportLibrary = "26.0.2"
+    const val supportLibrary = "27.0.2"
     const val timber = "4.5.1"
     const val pageIndicatorView = "0.2.0"
 
