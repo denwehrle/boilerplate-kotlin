@@ -25,7 +25,7 @@ class ContactDataSyncAdapter(context: Context, autoInitialize: Boolean, private 
         disposables.add(contactDataManager.syncContacts()
                 .subscribeOn(Schedulers.io())
                 .subscribeBy(
-                        onNext = {
+                        onSuccess = {
                             val notification = NotificationUtils(context).buildNotification(it)
                             if (notification != null) {
                                 val notificationManager = NotificationManagerCompat.from(context)

@@ -3,6 +3,7 @@ package com.denwehrle.boilerplate.ui.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.denwehrle.boilerplate.data.auth.AuthenticatorUtils
+import com.denwehrle.boilerplate.injection.module.BindingModule
 import com.denwehrle.boilerplate.ui.LauncherActivity
 import com.denwehrle.boilerplate.ui.login.LoginActivity
 import com.denwehrle.boilerplate.ui.welcome.WelcomeActivity
@@ -16,9 +17,9 @@ abstract class BaseActivity : AppCompatActivity() {
     private var shouldCheckAccount = true
 
     /**
-     * For AndroidInjection.inject(this) to work the Activity/Fragment/Service has to be
-     * registered in injection/module/BindingModule. Make sure it's called before
-     * super.onCreate() to prevent unexpected crashed if the task gets suspended by the OS.
+     * For AndroidInjection.inject(this) to work the [AppCompatActivity] has to be registered
+     * in the [BindingModule]. Make sure it's called before super.onCreate() to
+     * prevent unexpected crashed if the task gets suspended by the OS.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

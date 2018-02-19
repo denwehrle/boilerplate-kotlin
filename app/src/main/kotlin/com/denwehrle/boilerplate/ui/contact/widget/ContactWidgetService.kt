@@ -3,6 +3,7 @@ package com.denwehrle.boilerplate.ui.contact.widget
 import android.content.Intent
 import android.widget.RemoteViewsService
 import com.denwehrle.boilerplate.data.manager.contact.ContactDataManager
+import com.denwehrle.boilerplate.injection.module.BindingModule
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -23,9 +24,9 @@ class ContactWidgetService : RemoteViewsService() {
     }
 
     /**
-     * For AndroidInjection.inject(this) to work the Activity/Fragment/Service has to be
-     * registered in injection/module/BindingModule. Make sure it's called before
-     * super.onCreate() to prevent unexpected crashed if the task gets suspended by the OS.
+     * For AndroidInjection.inject(this) to work the Service has to be registered
+     * in the [BindingModule]. Make sure it's called before super.onCreate() to
+     * prevent unexpected crashed if the task gets suspended by the OS.
      */
     override fun onCreate() {
         AndroidInjection.inject(this)

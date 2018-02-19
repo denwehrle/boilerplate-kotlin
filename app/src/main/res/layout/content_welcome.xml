@@ -49,19 +49,19 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:text="DONE"   android:visibility="gone"
+            android:text="DONE"
             android:textColor="#fff"
-            />
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/nextButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="8dp"
             android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@null"
+            android:padding="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_chevron_right" />
-
     </LinearLayout>
 </FrameLayout>

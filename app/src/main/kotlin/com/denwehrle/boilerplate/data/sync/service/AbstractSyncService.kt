@@ -7,6 +7,7 @@ import android.os.IBinder
 
 import dagger.android.AndroidInjection
 import timber.log.Timber
+import com.denwehrle.boilerplate.injection.module.BindingModule
 
 /**
  * @author Dennis Wehrle
@@ -19,9 +20,9 @@ abstract class AbstractSyncService : Service() {
     abstract fun createSyncAdapter(): AbstractThreadedSyncAdapter
 
     /**
-     * For AndroidInjection.inject(this) to work the Activity/Fragment/Service has to be
-     * registered in injection/module/BindingModule. Make sure it's called before
-     * super.onCreate() to prevent unexpected crashed if the task gets suspended by the OS.
+     * For AndroidInjection.inject(this) to work the [Service] has to be registered
+     * in the [BindingModule]. Make sure it's called before super.onCreate() to
+     * prevent unexpected crashed if the task gets suspended by the OS.
      */
     override fun onCreate() {
         AndroidInjection.inject(this)

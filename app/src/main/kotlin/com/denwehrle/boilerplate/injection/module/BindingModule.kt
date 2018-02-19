@@ -14,6 +14,9 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 /**
+ * This module is used by the AndroidInjector. Register your activities/fragments and
+ * services/receivers here so they can be injected inside the onCreate() methods.
+ *
  * @author Dennis Wehrle
  */
 @Module
@@ -31,6 +34,13 @@ abstract class BindingModule {
     abstract fun welcomeSectionFragment(): WelcomeSectionFragment
 
 
+    /********* Login *********/
+
+    @PerActivity
+    @ContributesAndroidInjector
+    abstract fun loginActivity(): LoginActivity
+
+
     /********* Contact *********/
 
     @PerActivity
@@ -42,11 +52,10 @@ abstract class BindingModule {
     abstract fun contactDetailActivity(): ContactDetailActivity
 
 
-    /********* Misc *********/
+    /********* Service *********/
 
-    @PerActivity
     @ContributesAndroidInjector
-    abstract fun loginActivity(): LoginActivity
+    abstract fun contactSyncService(): ContactSyncService
 
 
     /********* Widget *********/
@@ -56,10 +65,4 @@ abstract class BindingModule {
 
     @ContributesAndroidInjector
     abstract fun contactWidgetService(): ContactWidgetService
-
-
-    /********* Service *********/
-
-    @ContributesAndroidInjector
-    abstract fun contactSyncService(): ContactSyncService
 }

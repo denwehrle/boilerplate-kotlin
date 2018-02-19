@@ -5,6 +5,7 @@ import com.denwehrle.boilerplate.R
 import com.denwehrle.boilerplate.data.local.model.Contact
 import com.denwehrle.boilerplate.ui.base.BaseDetailActivity
 import kotlinx.android.synthetic.main.activity_contact_detail.*
+import kotlinx.android.synthetic.main.content_contact_detail.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -18,7 +19,7 @@ class ContactDetailActivity : BaseDetailActivity(), ContactDetailMvpView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contact)
+        setContentView(R.layout.activity_contact_detail)
 
         val email = intent.getStringExtra("email") ?: ""
 
@@ -44,6 +45,7 @@ class ContactDetailActivity : BaseDetailActivity(), ContactDetailMvpView {
      */
     override fun showData(contact: Contact) {
         title = contact.email
+        textName.text = contact.toString()
     }
 
     /**

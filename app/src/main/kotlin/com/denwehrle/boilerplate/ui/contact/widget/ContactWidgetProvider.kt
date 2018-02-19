@@ -3,6 +3,7 @@ package com.denwehrle.boilerplate.ui.contact.widget
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,7 @@ import android.view.View
 import android.widget.RemoteViews
 import com.denwehrle.boilerplate.BuildConfig
 import com.denwehrle.boilerplate.R
+import com.denwehrle.boilerplate.injection.module.BindingModule
 import com.denwehrle.boilerplate.ui.contact.ContactActivity
 import dagger.android.AndroidInjection
 import timber.log.Timber
@@ -22,7 +24,9 @@ import java.util.*
 class ContactWidgetProvider : AppWidgetProvider() {
 
     companion object {
-        const val ACTION_SCHEDULE_WIDGET_REFRESH = BuildConfig.APPLICATION_ID + ".widgetRefresh"
+        const val ACTION_WIDGET_REFRESH = BuildConfig.APPLICATION_ID + ".widgetRefresh"
+        const val ACTION_WIDGET_ENABLED = "android.appwidget.action.APPWIDGET_ENABLED"
+        const val ACTION_WIDGET_UPDATE = "android.appwidget.action.APPWIDGET_UPDATE"
 
         fun getAllAppWidgetIds(context: Context, appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context)): IntArray {
             return appWidgetManager.getAppWidgetIds(ComponentName(context, ContactWidgetProvider::class.java))
@@ -30,9 +34,9 @@ class ContactWidgetProvider : AppWidgetProvider() {
     }
 
     /**
-     * For AndroidInjection.inject(this) to work the Activity/Fragment/Service/Receiver has to be
-     * registered in injection/module/BindingModule. Make sure it's called before
-     * super.onReceive() to prevent unexpected crashed if the task gets suspended by the OS.
+     * For AndroidInjection.inject(this) to work the [BroadcastReceiver] has to be registered
+     * in the [BindingModule]. Make sure it's called before super.onReceive() to
+     * prevent unexpected crashed if the task gets suspended by the OS.
      */
     override fun onReceive(context: Context, intent: Intent) {
         AndroidInjection.inject(this, context)
@@ -44,8 +48,7 @@ class ContactWidgetProvider : AppWidgetProvider() {
         Timber.d("onReceive(), action: %s, widget ID: %d", action, intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, -1))
 
         when (action) {
-            ACTION_SCHEDULE_WIDGET_REFRESH -> updateAllWidgetsUI(context)
-
+            ACTION_WIDGET_REFRESH, ACTION_WIDGET_ENABLED, ACTION_WIDGET_UPDATE -> updateAllWidgetsUI(context)
             else -> Timber.d("Unknown action received, ignoring: %s", action)
         }
     }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.denwehrle.boilerplate.R
+import com.denwehrle.boilerplate.injection.module.BindingModule
 import dagger.android.AndroidInjection
 
 /**
@@ -12,9 +13,9 @@ import dagger.android.AndroidInjection
 abstract class BaseDetailActivity : AppCompatActivity() {
 
     /**
-     * For AndroidInjection.inject(this) to work the Activity/Fragment/Service has to be
-     * registered in injection/module/BindingModule. Make sure it's called before
-     * super.onCreate() to prevent unexpected crashed if the task gets suspended by the OS.
+     * For AndroidInjection.inject(this) to work the [AppCompatActivity] has to be registered
+     * in the [BindingModule]. Make sure it's called before super.onCreate() to
+     * prevent unexpected crashed if the task gets suspended by the OS.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

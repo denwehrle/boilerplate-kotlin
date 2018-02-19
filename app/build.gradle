@@ -21,6 +21,13 @@ android {
         targetSdkVersion Versions.androidTargetSdk
         testInstrumentationRunner "com.denwehrle.boilerplate.util.helper.TestRunner"
         multiDexEnabled = true
+
+        // export the room schema, so we can use it for testing
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     signingConfigs {
@@ -125,6 +132,7 @@ dependencies {
     implementation AppDependencies.roomRuntime
     implementation AppDependencies.roomRxJava
     implementation AppDependencies.rxAndroid
+    implementation AppDependencies.rxJava
     implementation AppDependencies.rxKotlin
     implementation AppDependencies.stetho
     implementation AppDependencies.supportDesign

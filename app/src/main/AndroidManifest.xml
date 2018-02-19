@@ -38,6 +38,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.welcome.WelcomeActivity" />
+
+        <activity android:name=".ui.login.LoginActivity" />
+
         <activity android:name=".ui.contact.ContactActivity"/>
 
         <activity
@@ -48,10 +52,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.contact.ContactActivity" />
         </activity>
-
-        <activity android:name=".ui.welcome.WelcomeActivity" />
-
-        <activity android:name=".ui.login.LoginActivity" />
 
 
         <!-- Authentication -->

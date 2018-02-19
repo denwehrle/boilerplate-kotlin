@@ -5,7 +5,7 @@ import android.content.Context
 import io.reactivex.disposables.CompositeDisposable
 
 /**
- * @author Richard Gottschalk, Matthias Baeuerle, Dennis Wehrle
+ * @author Dennis Wehrle
  */
 abstract class AbstractSyncAdapter(context: Context, autoInitialize: Boolean) : AbstractThreadedSyncAdapter(context, autoInitialize) {
 
