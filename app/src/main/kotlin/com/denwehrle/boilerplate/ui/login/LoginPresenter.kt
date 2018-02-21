@@ -4,7 +4,6 @@ import com.denwehrle.boilerplate.data.manager.login.LoginDataManager
 import com.denwehrle.boilerplate.data.remote.model.LoginResult
 import com.denwehrle.boilerplate.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -19,12 +18,6 @@ import javax.inject.Inject
 class LoginPresenter @Inject constructor(private val dataManager: LoginDataManager) : BasePresenter<LoginMvpView>() {
 
     /**
-     * All disposables will be stored inside the [CompositeDisposable] so we can clear
-     * them all at the same time.
-     */
-    private val disposables: CompositeDisposable = CompositeDisposable()
-
-    /**
      * If we attach the Presenter there are tasks we can start regardless
      * the specific data, so let's do this here.
      */
@@ -32,14 +25,6 @@ class LoginPresenter @Inject constructor(private val dataManager: LoginDataManag
         super.attachView(mvpView)
 
         this.mvpView.setUpClickListener()
-    }
-
-    /**
-     * Make sure to clear the disposables so we don't create a memory leak.
-     */
-    override fun detachView() {
-        super.detachView()
-        disposables.clear()
     }
 
     fun signIn(username: String, password: String) {
