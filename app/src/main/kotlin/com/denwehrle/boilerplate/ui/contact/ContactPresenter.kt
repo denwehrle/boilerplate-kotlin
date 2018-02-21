@@ -18,12 +18,6 @@ import javax.inject.Inject
 class ContactPresenter @Inject constructor(private val dataManager: ContactDataManager) : BasePresenter<ContactMvpView>() {
 
     /**
-     * All disposables will be stored inside the [CompositeDisposable] so we can clear
-     * them all at the same time.
-     */
-    private val disposables: CompositeDisposable = CompositeDisposable()
-
-    /**
      * If we attach the Presenter there are tasks we can start regardless
      * the specific data, so let's do this here.
      */
@@ -32,14 +26,6 @@ class ContactPresenter @Inject constructor(private val dataManager: ContactDataM
 
         this.mvpView.setUpToolbar()
         this.mvpView.setupRecyclerAdapter()
-    }
-
-    /**
-     * Make sure to clear the disposables so we don't create a memory leak.
-     */
-    override fun detachView() {
-        super.detachView()
-        disposables.clear()
     }
 
     /**
