@@ -79,7 +79,6 @@ class LoginActivity : BaseActivity(), LoginMvpView, View.OnClickListener {
         AccountManager.get(this).addAccountExplicitly(account, password, null)
 
         SyncUtils.createSyncAccount(account)
-        SyncUtils.triggerRefresh(account)
 
         Toast.makeText(this, "YEAH", Toast.LENGTH_SHORT).show()
 

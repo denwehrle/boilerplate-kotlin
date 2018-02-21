@@ -14,9 +14,11 @@ object Versions {
     const val androidMinSdk = 16
     const val androidTargetSdk = 27
 
-    // App Libraries
     const val constraintLayout = "1.0.2"
-    const val dagger = "2.13"
+    const val supportLibrary = "27.0.2"
+
+    // App Libraries
+    const val dagger = "2.14.1"
     const val glassfishAnnotation = "10.0-b28"
     const val glide = "4.0.0"
     const val gson = "2.8.1"
@@ -31,7 +33,6 @@ object Versions {
     const val rxJava = "2.0.2"
     const val rxKotlin = "2.1.0"
     const val stetho = "1.4.0"
-    const val supportLibrary = "27.0.2"
     const val timber = "4.5.1"
     const val pageIndicatorView = "0.2.0"
 
@@ -51,11 +52,12 @@ object Versions {
 @Suppress("unused")
 object AppDependencies {
 
-    const val androidAnnotations = "com.android.support:support-annotations:${Versions.supportLibrary}"
+    const val androidSupportAnnotations = "com.android.support:support-annotations:${Versions.supportLibrary}"
+    const val androidSupportAppCompatV7 = "com.android.support:appcompat-v7:${Versions.supportLibrary}"
+    const val androidSupportConstraintLayout = "com.android.support.constraint:constraint-layout:${Versions.constraintLayout}"
+    const val androidSupportDesign = "com.android.support:design:${Versions.supportLibrary}"
+    const val androidSupportRecyclerView = "com.android.support:recyclerview-v7:${Versions.supportLibrary}"
     const val androidSupportV13 = "com.android.support:support-v13:${Versions.supportLibrary}"
-    const val androidSupportV4 = "com.android.support:support-v4:${Versions.supportLibrary}"
-    const val appCompatV7 = "com.android.support:appcompat-v7:${Versions.supportLibrary}"
-    const val constraintLayout = "com.android.support.constraint:constraint-layout:${Versions.constraintLayout}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val daggerProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
@@ -70,6 +72,7 @@ object AppDependencies {
     const val leakCanaryRelease = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val okHttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+    const val pageindicatorview = "com.romandanylyk:pageindicatorview:${Versions.pageIndicatorView}@aar"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     const val retrofitConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
@@ -80,10 +83,7 @@ object AppDependencies {
     const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxJava}"
     const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
     const val stetho = "com.facebook.fresco:stetho:${Versions.stetho}"
-    const val supportDesign = "com.android.support:design:${Versions.supportLibrary}"
-    const val supportRecyclerView = "com.android.support:recyclerview-v7:${Versions.supportLibrary}"
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
-    const val pageindicatorview = "com.romandanylyk:pageindicatorview:${Versions.pageIndicatorView}@aar"
 }
 
 @Suppress("unused")

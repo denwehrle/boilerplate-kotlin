@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment
 import com.denwehrle.boilerplate.injection.component.DaggerAppComponent
 import com.denwehrle.boilerplate.util.notification.NotificationUtils
 import com.facebook.stetho.Stetho
+import com.squareup.leakcanary.LeakCanary
 import dagger.android.*
 import dagger.android.support.HasSupportFragmentInjector
 import timber.log.Timber
@@ -38,10 +39,10 @@ class App : Application(), HasActivityInjector, HasServiceInjector, HasBroadcast
     override fun onCreate() {
         super.onCreate()
 
-        /*if (LeakCanary.isInAnalyzerProcess(this)) {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
             return
         }
-        LeakCanary.install(this)*/
+        LeakCanary.install(this)
 
         DaggerAppComponent
                 .builder()

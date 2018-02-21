@@ -117,11 +117,13 @@ configurations.all {
 dependencies {
 
     // App dependencies
-    implementation AppDependencies.androidAnnotations
+    implementation AppDependencies.androidSupportAnnotations
+    implementation AppDependencies.androidSupportAppCompatV7
+    implementation AppDependencies.androidSupportConstraintLayout
+    implementation AppDependencies.androidSupportDesign
+    implementation AppDependencies.androidSupportRecyclerView
     implementation AppDependencies.androidSupportV13
-    implementation AppDependencies.androidSupportV4
-    implementation AppDependencies.appCompatV7
-    implementation AppDependencies.constraintLayout
+
     implementation AppDependencies.dagger
     implementation AppDependencies.daggerSupport
     implementation AppDependencies.glide
@@ -140,8 +142,6 @@ dependencies {
     implementation AppDependencies.rxJava
     implementation AppDependencies.rxKotlin
     implementation AppDependencies.stetho
-    implementation AppDependencies.supportDesign
-    implementation AppDependencies.supportRecyclerView
     implementation AppDependencies.timber
     implementation AppDependencies.pageindicatorview
 

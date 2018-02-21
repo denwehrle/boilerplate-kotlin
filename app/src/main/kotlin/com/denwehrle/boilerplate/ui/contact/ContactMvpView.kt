@@ -12,7 +12,7 @@ interface ContactMvpView : MvpView {
 
     fun setupRecyclerAdapter()
 
-    fun showProgress(value: Boolean)
+    fun setupSwipeRefresh()
 
     fun showData(contacts: List<Contact>)
 

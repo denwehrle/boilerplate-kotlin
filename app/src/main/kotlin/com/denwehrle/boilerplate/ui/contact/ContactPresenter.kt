@@ -3,9 +3,9 @@ package com.denwehrle.boilerplate.ui.contact
 import com.denwehrle.boilerplate.data.manager.contact.ContactDataManager
 import com.denwehrle.boilerplate.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -26,6 +26,7 @@ class ContactPresenter @Inject constructor(private val dataManager: ContactDataM
 
         this.mvpView.setUpToolbar()
         this.mvpView.setupRecyclerAdapter()
+        this.mvpView.setupSwipeRefresh()
     }
 
     /**
@@ -38,11 +39,10 @@ class ContactPresenter @Inject constructor(private val dataManager: ContactDataM
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                         onNext = {
-                            mvpView.showProgress(false)
                             mvpView.showData(it)
                         },
                         onError = {
-                            mvpView.showProgress(false)
+                            Timber.e(it)
                             mvpView.showError()
                         }
                 )

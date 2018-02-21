@@ -1,13 +1,18 @@
 package com.denwehrle.boilerplate.ui.contact
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import com.denwehrle.boilerplate.R
 import com.denwehrle.boilerplate.data.local.model.Contact
 import com.denwehrle.boilerplate.ui.base.BaseActivity
 import com.denwehrle.boilerplate.ui.contact.detail.ContactDetailActivity
+import com.denwehrle.boilerplate.util.extension.isNetworkConnected
+import com.denwehrle.boilerplate.util.sync.SyncUtils
 import kotlinx.android.synthetic.main.activity_contact.*
 import timber.log.Timber
 import javax.inject.Inject
@@ -15,7 +20,7 @@ import javax.inject.Inject
 /**
  * @author Dennis Wehrle
  */
-class ContactActivity : BaseActivity(), ContactMvpView {
+class ContactActivity : BaseActivity(), ContactMvpView, SwipeRefreshLayout.OnRefreshListener {
 
     /**
      * To make classed injectable make sure they have a constructor
@@ -32,6 +37,24 @@ class ContactActivity : BaseActivity(), ContactMvpView {
 
         presenter.attachView(this)
         presenter.loadData()
+    }
+
+    /**
+     * We check if a connection is available to trigger our sync and inform the user otherwise.
+     */
+    override fun onRefresh() {
+        swipeRefreshLayout.isRefreshing = true
+        if (isNetworkConnected()) {
+            SyncUtils.triggerRefresh(this)
+        } else {
+            swipeRefreshLayout.isRefreshing = false
+            Snackbar.make(coordinatorLayout, R.string.snackbar_no_connection, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.snackbar_retry) {
+                        onRefresh()
+                    }
+                    .setActionTextColor(resources.getColor(R.color.colorPrimary))
+                    .show()
+        }
     }
 
 
@@ -60,8 +83,17 @@ class ContactActivity : BaseActivity(), ContactMvpView {
         )
     }
 
-    override fun showProgress(value: Boolean) {
-        Timber.v("showProgress not implemented")
+    /**
+     * We change the color of the swipe layout spinner, to match our primary color.
+     */
+    override fun setupSwipeRefresh() {
+        val color: Int = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getColor(R.color.colorPrimary)
+        } else {
+            resources.getColor(R.color.colorPrimary)
+        }
+        swipeRefreshLayout.setColorSchemeColors(color)
+        swipeRefreshLayout.setOnRefreshListener(this)
     }
 
     /**
@@ -69,6 +101,7 @@ class ContactActivity : BaseActivity(), ContactMvpView {
      * UI that something has changed.
      */
     override fun showData(contacts: List<Contact>) {
+        swipeRefreshLayout.isRefreshing = false
         adapter.contacts = contacts
         adapter.notifyDataSetChanged()
     }

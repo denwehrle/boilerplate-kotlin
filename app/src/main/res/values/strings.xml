@@ -9,4 +9,7 @@
     <string name="welcome_text_1">Welcome to my awesome app!</string>
     <string name="welcome_text_2">Make sure to bring an umbrella!</string>
     <string name="welcome_text_3">What about a cake?</string>
+
+    <string name="snackbar_no_connection">No connection</string>
+    <string name="snackbar_retry">Retry</string>
 </resources>

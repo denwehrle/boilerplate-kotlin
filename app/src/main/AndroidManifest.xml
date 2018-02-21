@@ -42,7 +42,7 @@
 
         <activity android:name=".ui.login.LoginActivity" />
 
-        <activity android:name=".ui.contact.ContactActivity"/>
+        <activity android:name=".ui.contact.ContactActivity" />
 
         <activity
             android:name=".ui.contact.detail.ContactDetailActivity"
@@ -57,8 +57,7 @@
         <!-- Authentication -->
         <service
             android:name=".data.auth.AuthenticatorService"
-            android:exported="false"
-            android:process=":auth">
+            android:exported="false">
 
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
@@ -73,8 +72,7 @@
         <!-- Services -->
         <service
             android:name=".data.sync.service.ContactSyncService"
-            android:exported="true"
-            android:process=":data">
+            android:exported="true">
 
             <intent-filter>
                 <action android:name="android.content.SyncAdapter" />

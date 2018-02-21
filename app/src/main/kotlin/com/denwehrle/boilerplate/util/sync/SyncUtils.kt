@@ -2,7 +2,9 @@ package com.denwehrle.boilerplate.util.sync
 
 import android.accounts.Account
 import android.content.ContentResolver
+import android.content.Context
 import android.os.Bundle
+import com.denwehrle.boilerplate.data.auth.AuthenticatorUtils
 
 /**
  * @author Dennis Wehrle
@@ -23,6 +25,13 @@ object SyncUtils {
         // Recommend a schedule for automatic synchronization. The system may modify this based
         // on other scheduled syncs and network utilization.
         ContentResolver.addPeriodicSync(account, CONTENT_AUTHORITY, Bundle(), SYNC_FREQUENCY)
+    }
+
+    fun triggerRefresh(context: Context) {
+        val account = AuthenticatorUtils.getAccount(context)
+        if (account != null) {
+            triggerRefresh(account)
+        }
     }
 
     fun triggerRefresh(account: Account) {
