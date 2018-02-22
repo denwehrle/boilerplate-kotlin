@@ -4,9 +4,7 @@ import android.content.Intent
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.assertion.ViewAssertions.matches
 import android.support.test.espresso.contrib.RecyclerViewActions
-import android.support.test.espresso.matcher.ViewMatchers
-import android.support.test.espresso.matcher.ViewMatchers.hasDescendant
-import android.support.test.espresso.matcher.ViewMatchers.withText
+import android.support.test.espresso.matcher.ViewMatchers.*
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import android.support.v7.widget.RecyclerView
@@ -56,7 +54,7 @@ class ContactActivityTest {
         activity.launchActivity(Intent().putExtra("testMode", true))
 
         contacts.forEachIndexed { index, contact ->
-            onView(ViewMatchers.withId(R.id.recyclerView))
+            onView(withId(R.id.recyclerView))
                     .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(index))
             checkDetailsDisplay(contact, index)
         }
