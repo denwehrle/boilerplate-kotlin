@@ -11,7 +11,6 @@ import com.denwehrle.boilerplate.ui.welcome.section.WelcomeSectionFragment
 import kotlinx.android.synthetic.main.content_welcome.*
 import javax.inject.Inject
 
-
 /**
  * @author Dennis Wehrle
  */

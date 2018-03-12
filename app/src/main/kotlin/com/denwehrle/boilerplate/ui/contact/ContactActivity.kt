@@ -14,6 +14,7 @@ import com.denwehrle.boilerplate.ui.contact.detail.ContactDetailActivity
 import com.denwehrle.boilerplate.util.extension.isNetworkConnected
 import com.denwehrle.boilerplate.util.sync.SyncUtils
 import kotlinx.android.synthetic.main.activity_contact.*
+import kotlinx.android.synthetic.main.content_contact.*
 import timber.log.Timber
 import javax.inject.Inject
 

@@ -19,10 +19,21 @@ Languages, libraries and tools used
 - [Mockito](http://mockito.org/)
 - [DexOpener](https://github.com/tmurakami/dexopener)
 
+
+## Features
+
+* Welcome Screens with ViewPager
+* Login Screen with Account + Sync
+* Offline first approach with cache logic
+* RecyclerView with dummy data from RestAPI
+* Detail Screens with additional data
+* Background sync + Notifications
+* Homescreen Widget
+
 ## Requirements
 
 - JDK 1.8
-- Android Studio 3.0
+- Android Studio 3
 - [Android SDK](http://developer.android.com/sdk/index.html)
 - Android Oreo [(API 27)](http://developer.android.com/tools/revisions/platforms.html)
 - Latest Android SDK Tools and build tools.

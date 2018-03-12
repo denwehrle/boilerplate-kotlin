@@ -24,7 +24,7 @@ object Versions {
     const val gson = "2.8.1"
     const val javaxAnnotation = "1.0"
     const val javaxInject = "1"
-    const val kotlin = "1.2.21"
+    const val kotlin = "1.2.30"
     const val leakCanary = "1.5.4"
     const val okHttp = "3.8.1"
     const val retrofit = "2.3.0"
