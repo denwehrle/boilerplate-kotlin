@@ -2,31 +2,35 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2344ddeb9f686267395435aabda47088",
+    "identityHash": "1df93e120d734e4611adfba77ffd872e",
     "entities": [
       {
         "tableName": "Contact",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`email` TEXT, `firstName` TEXT, `lastName` TEXT, `avatar` TEXT, PRIMARY KEY(`email`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`email` TEXT NOT NULL, `firstName` TEXT NOT NULL, `lastName` TEXT NOT NULL, `avatar` TEXT NOT NULL, PRIMARY KEY(`email`))",
         "fields": [
           {
             "fieldPath": "email",
             "columnName": "email",
-            "affinity": "TEXT"
+            "affinity": "TEXT",
+            "notNull": true
           },
           {
             "fieldPath": "firstName",
             "columnName": "firstName",
-            "affinity": "TEXT"
+            "affinity": "TEXT",
+            "notNull": true
           },
           {
             "fieldPath": "lastName",
             "columnName": "lastName",
-            "affinity": "TEXT"
+            "affinity": "TEXT",
+            "notNull": true
           },
           {
             "fieldPath": "avatar",
             "columnName": "avatar",
-            "affinity": "TEXT"
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -41,7 +45,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"2344ddeb9f686267395435aabda47088\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"1df93e120d734e4611adfba77ffd872e\")"
     ]
   }
 }

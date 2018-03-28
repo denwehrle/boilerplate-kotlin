@@ -74,14 +74,10 @@ class ContactActivity : BaseActivity(), ContactMvpView, SwipeRefreshLayout.OnRef
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
 
-        adapter.setOnItemClickListener(
-                object : ContactAdapter.OnItemClickListener {
-                    override fun onItemClick(contact: Contact) {
-                        startActivity(Intent(applicationContext, ContactDetailActivity::class.java).putExtra("email", contact.email))
-                        overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_left)
-                    }
-                }
-        )
+        adapter.onItemClick = {
+            startActivity(Intent(applicationContext, ContactDetailActivity::class.java).putExtra("email", it.email))
+            overridePendingTransition(R.anim.slide_out_left, R.anim.slide_in_left)
+        }
     }
 
     /**

@@ -18,11 +18,7 @@ import javax.inject.Inject
  */
 class ContactAdapter @Inject constructor() : RecyclerView.Adapter<ContactAdapter.ViewHolder>() {
 
-    interface OnItemClickListener {
-        fun onItemClick(contact: Contact)
-    }
-
-    lateinit var itemClickListener: OnItemClickListener
+    var onItemClick: ((Contact) -> Unit)? = null
     var contacts: List<Contact> = emptyList()
 
     override fun getItemCount(): Int {
@@ -52,10 +48,6 @@ class ContactAdapter @Inject constructor() : RecyclerView.Adapter<ContactAdapter
                 .into(holder.avatarImage)
     }
 
-    fun setOnItemClickListener(itemClickListener: OnItemClickListener) {
-        this.itemClickListener = itemClickListener
-    }
-
     /**
      * We don't have any findViewById calls because we use the
      * kotlin android extensions to automatically inject the views.
@@ -68,8 +60,7 @@ class ContactAdapter @Inject constructor() : RecyclerView.Adapter<ContactAdapter
 
         init {
             itemView.setOnClickListener {
-                itemClickListener.onItemClick(contacts[adapterPosition])
-
+                onItemClick?.invoke(contacts[adapterPosition])
             }
         }
     }
