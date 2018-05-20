@@ -7,16 +7,12 @@ def versionMajor = 1
 def versionMinor = 0
 def versionPatch = 0
 
-static def getBuildNumber() {
-    return System.getenv("BUILD_NUMBER") as Integer ?: 0
-}
-
 android {
     compileSdkVersion Versions.androidCompileSdk
 
     defaultConfig {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
-        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + getBuildNumber()
+        versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
         minSdkVersion Versions.androidMinSdk
         targetSdkVersion Versions.androidTargetSdk
         testInstrumentationRunner "com.denwehrle.boilerplate.util.helper.TestRunner"
@@ -49,8 +45,8 @@ android {
     buildTypes {
         release {
             signingConfig signingConfigs.release
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), file('proguard-rules.pro')
         }
 
