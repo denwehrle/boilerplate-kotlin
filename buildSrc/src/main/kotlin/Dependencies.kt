@@ -67,7 +67,7 @@ object AppDependencies {
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
     const val javaxAnnotation = "javax.annotation:jsr250-api:${Versions.javaxAnnotation}"
     const val javaxInject = "javax.inject:javax.inject:${Versions.javaxInject}"
-    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jre8:${Versions.kotlin}"
+    const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val leakCanaryDebug = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
     const val leakCanaryRelease = "com.squareup.leakcanary:leakcanary-android-no-op:${Versions.leakCanary}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
