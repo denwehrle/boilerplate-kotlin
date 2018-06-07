@@ -104,12 +104,6 @@ kapt {
     correctErrorTypes = true
 }
 
-configurations.all {
-    resolutionStrategy {
-        force "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    }
-}
-
 dependencies {
 
     // App dependencies
