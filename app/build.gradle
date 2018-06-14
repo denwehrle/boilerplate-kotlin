@@ -8,17 +8,18 @@ def versionMinor = 0
 def versionPatch = 0
 
 android {
-    compileSdkVersion Versions.androidCompileSdk
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
-        minSdkVersion Versions.androidMinSdk
-        targetSdkVersion Versions.androidTargetSdk
+        minSdkVersion 17
+        targetSdkVersion 27
         testInstrumentationRunner "com.denwehrle.boilerplate.util.helper.TestRunner"
         multiDexEnabled = true
 
-        // export the room schema, so we can use it for testing
+        // export the room schema, so we can use it for testing or migration
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
@@ -104,81 +105,105 @@ kapt {
     correctErrorTypes = true
 }
 
+configurations {
+    implementation.exclude group: 'stax'
+    implementation.exclude group: 'xpp3'
+}
+
 dependencies {
+    final SUPPORT_LIBRARY_VERSION = '27.1.1'
+    final DAGGER_VERSION = '2.15'
+    final RETROFIT_VERSION = '2.4.0'
+    final ROOM_VERSION = '1.1.0'
 
-    // App dependencies
-    implementation AppDependencies.androidSupportAnnotations
-    implementation AppDependencies.androidSupportAppCompatV7
-    implementation AppDependencies.androidSupportConstraintLayout
-    implementation AppDependencies.androidSupportDesign
-    implementation AppDependencies.androidSupportRecyclerView
-    implementation AppDependencies.androidSupportV13
+    // Support Libraries
+    implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:support-v13:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
+    implementation "com.android.support.constraint:constraint-layout:1.1.2"
+    implementation "com.android.support:multidex:1.0.3"
 
-    implementation AppDependencies.dagger
-    implementation AppDependencies.daggerSupport
-    implementation AppDependencies.glide
-    implementation AppDependencies.gson
-    implementation AppDependencies.javaxAnnotation
-    implementation AppDependencies.javaxInject
-    implementation AppDependencies.kotlin
-    implementation AppDependencies.okHttp
-    implementation AppDependencies.okHttpLogger
-    implementation AppDependencies.retrofit
-    implementation AppDependencies.retrofitAdapter
-    implementation AppDependencies.retrofitConverter
-    implementation AppDependencies.roomRuntime
-    implementation AppDependencies.roomRxJava
-    implementation AppDependencies.rxAndroid
-    implementation AppDependencies.rxJava
-    implementation AppDependencies.rxKotlin
-    implementation AppDependencies.stetho
-    implementation AppDependencies.timber
-    implementation AppDependencies.pageindicatorview
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
-    debugImplementation AppDependencies.leakCanaryDebug
-    releaseImplementation AppDependencies.leakCanaryRelease
+    // reactive extensions
+    implementation "io.reactivex.rxjava2:rxjava:2.1.12"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
 
-    kapt AppDependencies.roomCompiler
-    kapt AppDependencies.daggerCompiler
-    kapt AppDependencies.daggerProcessor
+    // dagger (dependency injection)
+    implementation "com.google.dagger:dagger:$DAGGER_VERSION"
+    implementation "com.google.dagger:dagger-android-support:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
+    kapt "com.google.dagger:dagger-android-processor:${DAGGER_VERSION}"
 
-    compileOnly AppDependencies.glassfishAnnotation
+    // room persistence library
+    implementation "android.arch.persistence.room:runtime:$ROOM_VERSION"
+    implementation "android.arch.persistence.room:rxjava2:$ROOM_VERSION"
+    kapt "android.arch.persistence.room:compiler:$ROOM_VERSION"
+
+    // retrofit 2 (network calls - https://github.com/square/retrofit)
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-simplexml:$RETROFIT_VERSION"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+
+    // timber (application logging - https://github.com/JakeWharton/timber)
+    implementation "com.jakewharton.timber:timber:4.6.1"
+
+    // stetho (debug bridge http://facebook.github.io/stetho)
+    implementation "com.facebook.stetho:stetho:1.5.0"
+
+    // leak canary (memory leak detection https://github.com/square/leakcanary)
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:1.5.4"
+    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4"
+
+    // Other dependencies
+    implementation "com.romandanylyk:pageindicatorview:1.0.0"
+    implementation "com.github.bumptech.glide:glide:4.6.1"
+    implementation "pl.charmas.android:android-reactive-location2:2.1@aar"
 
     // Instrumentation test dependencies
-    androidTestImplementation TestDependencies.dexopener
-    androidTestImplementation TestDependencies.junit
-    androidTestImplementation TestDependencies.mockitoKotlin
-    androidTestImplementation TestDependencies.dexmakerMockito
-    androidTestImplementation(TestDependencies.espressoCore) {
-        exclude group: 'com.android.support', module: 'support-annotations'
+    androidTestImplementation "junit:junit:4.12"
+    androidTestImplementation "com.android.support.test:runner:1.0.2"
+    androidTestImplementation "com.github.tmurakami:dexopener:0.12.1"
+    androidTestImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+    androidTestImplementation "com.linkedin.dexmaker:dexmaker-mockito:2.16.0"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.1") {
+        exclude group: "com.android.support", module: "support-annotations"
     }
-    androidTestImplementation(TestDependencies.androidRunner) {
-        exclude group: 'com.android.support', module: 'support-annotations'
+    androidTestImplementation("com.android.support.test:runner:1.0.1") {
+        exclude group: "com.android.support", module: "support-annotations"
     }
-    androidTestImplementation(TestDependencies.androidRules) {
-        exclude group: 'com.android.support', module: 'support-annotations'
+    androidTestImplementation("com.android.support.test:rules:1.0.1") {
+        exclude group: "com.android.support", module: "support-annotations"
     }
-    androidTestImplementation(TestDependencies.espressoIntents) {
-        exclude group: 'com.android.support', module: 'support-annotations'
+    androidTestImplementation("com.android.support.test.espresso:espresso-intents:3.0.1") {
+        exclude group: "com.android.support", module: "support-annotations"
     }
-    androidTestImplementation(TestDependencies.espressoContrib) {
-        exclude module: 'appcompat'
-        exclude module: 'appcompat-v7'
-        exclude module: 'support-v4'
-        exclude module: 'support-v13'
-        exclude module: 'support-annotations'
-        exclude module: 'recyclerview-v7'
-        exclude module: 'design'
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.1") {
+        exclude module: "appcompat"
+        exclude module: "appcompat-v7"
+        exclude module: "support-v4"
+        exclude module: "support-v13"
+        exclude module: "support-annotations"
+        exclude module: "recyclerview-v7"
+        exclude module: "design"
     }
-    kaptAndroidTest AppDependencies.daggerCompiler
+
+    kaptAndroidTest "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
 
     // Unit test dependencies
-    testImplementation TestDependencies.junit
-    testImplementation TestDependencies.kotlinJUnit
-    testImplementation TestDependencies.mockitoKotlin
-    testImplementation TestDependencies.assertj
-    testImplementation TestDependencies.robolectric
-    testImplementation TestDependencies.roomTesting
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+    testImplementation "org.assertj:assertj-core:3.9.1"
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+    testImplementation "org.robolectric:robolectric:3.8"
+    testImplementation "android.arch.persistence.room:testing:$ROOM_VERSION"
 
-    kaptTest AppDependencies.daggerCompiler
+    kaptTest "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
 }
