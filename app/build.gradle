@@ -114,7 +114,7 @@ dependencies {
     final SUPPORT_LIBRARY_VERSION = '27.1.1'
     final DAGGER_VERSION = '2.15'
     final RETROFIT_VERSION = '2.4.0'
-    final ROOM_VERSION = '1.1.0'
+    final ROOM_VERSION = '1.1.1'
 
     // Support Libraries
     implementation "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
